@@ -1,5 +1,5 @@
 from vision_agents.core import Agent, AgentLauncher, User, Runner
-from vision_agents.plugins import getstream, openai, ultralytics  # Using OpenAI instead of Gemini
+from vision_agents.plugins import getstream, gemini, ultralytics  # Using OpenAI instead of Gemini
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -29,7 +29,7 @@ async def create_agent(**kwargs) -> Agent:
         """,
         
         # 🔴 You can switch between openai.Realtime() or gemini.Realtime()
-        llm=openai.Realtime(fps=10),  # 10 frames per second
+        llm=gemini.Realtime(fps=10),  # 10 frames per second
         
         # 🟢 This stays the same — YOLO pose works for all exercises
         processors=[ultralytics.YOLOPoseProcessor(model_path="yolo11n-pose.pt")],
